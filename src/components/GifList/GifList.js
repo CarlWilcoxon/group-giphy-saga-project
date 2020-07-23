@@ -19,15 +19,26 @@ const styles = theme => ({
   gridList: {
     width: 'auto',
     height: 'auto',
+    justifyContent: 'space-around',
+  },
+  titleBar: {
+    background:
+      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
 });
 
 class GifList extends Component {
 
-  addFavorite = (event) =>{
+  addFavorite = (index) =>{
+    // set the url, description and category_id vars
+    const url = this.props.reduxState.gifList[index].images.fixed_height.url;
+    const description = this.props.reduxState.gifList[index].title;
+    const category_id = 2;
+    
+    // dispatch the url, description and category_id vars as a payload.
     this.props.dispatch({type: 'ADD_FAVE', payload:
-    {url: this.props.gif.images.downsized.url,
-     description: this.props.gif.title,
+    {url: url,
+     description: description,
      category_id: 2 //placeholder 2 = 'cohort'
     }})
   }
@@ -38,9 +49,9 @@ class GifList extends Component {
     return (
       <div className={classes.root}>
         <GridList cellHeight={'auto'} className={classes.gridList} cols={0}>
-          {this.props.reduxState.gifList.map(tile => (
+          {this.props.reduxState.gifList.map((tile, index) => (
             <GridListTile key={tile.id} cols={tile.cols || 1}>
-              <img src={tile.images.downsized.url} alt={tile.title} />
+              <img src={tile.images.fixed_height.url} alt={tile.title} />
               <GridListTileBar
               title={tile.title}
               classes={{
@@ -49,13 +60,11 @@ class GifList extends Component {
               }}
               actionIcon={
                 <IconButton variant="contained" color="secondary"
-                onClick={this.addFavorite}><FavoriteIcon/>
+                onClick={()=>this.addFavorite(index)}><FavoriteIcon/>
                 </IconButton>
               }
-            />
-
-              </GridListTile>
-
+              />
+            </GridListTile>
           ))}
         </GridList>
       </div>
