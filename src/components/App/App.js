@@ -14,6 +14,7 @@ class App extends Component {
       <Router>
         <nav>
           <Link to = "/Favorites">Favorites</Link>
+          {'\u00A0'}{'\u00A0'}
           <Link to = "/">Search</Link>
         </nav>
       <div>

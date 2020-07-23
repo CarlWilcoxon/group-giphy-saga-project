@@ -17,6 +17,8 @@ import { takeEvery, put } from 'redux-saga/effects';
 function* watcherSaga() {
   yield takeEvery('FETCH_FAVE', getFavorites );
   yield takeEvery( 'SET_SEARCH', searchGifSaga);
+  yield takeEvery('FETCH_CATEGORY', getCategories);
+  yield takeEvery('PUT_CATEGORY', putCategory);
   // yield takeEvery( 'FETCH_GIF', getGifsSaga );
 }
 
@@ -43,6 +45,15 @@ function* searchGifSaga(action){
 //   }
 // }
 
+function* getCategories(){
+  try{
+    const response = yield axios.get('/api/category');
+    yield put({type:'SET_CATEGORY', payload: response.data});
+  }catch (error){
+    console.log('problem getting categories from server', error);
+  }
+}
+
 function* getFavorites(){
   try{
     const response = yield axios.get('/api/favorite');
@@ -52,6 +63,15 @@ function* getFavorites(){
   }//end axios
 }//end getFavorites
 
+function* putCategory(action){
+  console.log(action.payload.gif_id, action.payload.category_id)
+  try{
+    const response = yield axios.put('/api/favorite/' + action.payload.gif_id, {category_id: action.payload.category_id} );
+    yield put({type:'FETCH_FAVE', payload: response.data});
+  }catch (error){
+    console.log('problem with put to server', error);
+  }//end axios
+}//end getFavorites
 
 // function* removePlantSaga(action){
 //   try{
@@ -60,7 +80,7 @@ function* getFavorites(){
 //   } catch (error) {
 //     console.log('error with plant DELETE request', error);
 //   }
-// }
+ 
 
 const faveList= (state = [], action) => {
   switch (action.type) {
@@ -80,6 +100,15 @@ const gifList = (state = [], action) => {
   }
 };
 
+const categoryList=(state = [], action) => {
+  switch (action.type) {
+    case 'SET_CATEGORY':
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 // Saga Setup #2 - create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
 
@@ -87,6 +116,7 @@ const storeInstance = createStore(
   combineReducers({
     gifList,
     faveList,
+    categoryList,
   }),
   applyMiddleware(sagaMiddleware, logger)
 );
