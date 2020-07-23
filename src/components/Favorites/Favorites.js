@@ -12,7 +12,11 @@ class Favorites extends Component {
     return (
       <div>
         <h1>In favorites</h1>
-        {JSON.stringify(this.props.reduxState.faveList)}
+        {/* {JSON.stringify(this.props.reduxState.faveList)} */}
+        <ul>
+            {this.props.reduxState.faveList.map (item =>
+                <li key = {item.id}> <img src={item.url} alt={item.description}/></li> )}
+        </ul>
       </div>
     );
   }
