@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import GifItem from '../GifItem/GifItem';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-import Button from '@material-ui/core/Button';
-// import tileData from './tileData';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import IconButton from '@material-ui/core/IconButton';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
 
 const styles = theme => ({
   root: {
@@ -41,8 +41,21 @@ class GifList extends Component {
           {this.props.reduxState.gifList.map(tile => (
             <GridListTile key={tile.id} cols={tile.cols || 1}>
               <img src={tile.images.downsized.url} alt={tile.title} />
-              <Button onClick={tile.addFavorite} >Favorite</Button>
-            </GridListTile>
+              <GridListTileBar
+              title={tile.title}
+              classes={{
+                root: classes.titleBar,
+                title: classes.title,
+              }}
+              actionIcon={
+                <IconButton variant="contained" color="secondary"
+                onClick={this.addFavorite}><FavoriteIcon/>
+                </IconButton>
+              }
+            />
+
+              </GridListTile>
+
           ))}
         </GridList>
       </div>
