@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import GifList from '../GifList/GifList';
 
 
 class Search extends Component {
@@ -31,6 +32,7 @@ class Search extends Component {
           <input type="text" onChange={this.changeHandle}  value={this.state.searchText}/>
           <button type='submit' >Search</button>
         </form>
+        <GifList/>
       </div>
     );
   }
