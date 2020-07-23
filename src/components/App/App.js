@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 
 class App extends Component {
@@ -10,7 +11,11 @@ class App extends Component {
       </div>
     );
   }
-  
+
 }
 
-export default App;
+const mapStateToProps = reduxState => ({
+  reduxState,
+});
+
+export default connect(mapStateToProps)(App);
