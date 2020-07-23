@@ -52,6 +52,7 @@ class Favorites extends Component {
                             <option key = {category.id} value={Number(category.id)}>{category.name}</option>)}
                         </Select>
                     </FormControl>
+                    {'\u00A0'}{'\u00A0'}{'\u00A0'}{'\u00A0'}{'\u00A0'}{'\u00A0'}
                     <Button 
                       color = "primary"
                       variant ="outlined"
