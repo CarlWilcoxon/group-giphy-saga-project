@@ -20,6 +20,7 @@ function* watcherSaga() {
   yield takeEvery('FETCH_CATEGORY', getCategories);
   yield takeEvery('PUT_CATEGORY', putCategory);
   // yield takeEvery( 'FETCH_GIF', getGifsSaga );
+  yield takeEvery( 'ADD_FAVE', addFaveSaga );
 }
 
 function* searchGifSaga(action){
@@ -33,17 +34,18 @@ function* searchGifSaga(action){
     }
   }
 
-// //Saga to get plants from the server AJAX (axios)
-// function* getGifsSaga(){
-//   //us try/catch for errors - replaces promise .then & .catch
-//   try {
-//     const response = yield axios.get('/api/ca');
-//     // in Sagas, replace `dispatch` with `put`
-//     yield put({ type: 'SET_GIFS', payload: response.data });
-//   } catch (error) {
-//       console.log('error with plant get request', error);
-//   }
-// }
+//Saga to add favorites to database
+function* addFaveSaga(action){
+  //us try/catch for errors - replaces promise .then & .catch
+  try {
+    const response = yield axios.post('/api/favorite', {payload: action.payload});
+    console.log('Favorite successfully added.')
+    // in Sagas, replace `dispatch` with `put`
+    // yield put({ type: 'SET_GIFS', payload: response.data });
+  } catch (error) {
+      console.log('error with favorite POST request', error);
+  }
+}
 
 function* getCategories(){
   try{
