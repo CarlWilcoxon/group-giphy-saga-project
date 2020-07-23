@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import IconButton from '@material-ui/core/IconButton';
 
 
 class GifItem extends Component {
@@ -20,7 +23,9 @@ class GifItem extends Component {
         <td>
           <img src={this.props.gif.images.downsized.url} alt={this.props.gif.title} />
         </td>
-        <button onClick={this.addFavorite}>Favorite</button>
+        <IconButton variant="contained" color="secondary"
+        onClick={this.addFavorite}><FavoriteIcon/>
+        </IconButton>
       </tr>
     );
   }
