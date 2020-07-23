@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
+
 import Search from '../Search/Search';
 import GifList from '../GifList/GifList';
 

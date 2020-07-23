@@ -15,6 +15,7 @@ import { takeEvery, put } from 'redux-saga/effects';
 // Saga Setup #4 create the "main" saga function
 //   common names for this are `watcherSaga` and `rootSaga`
 function* watcherSaga() {
+  yield takeEvery('FETCH_FAVE', getFavorites );
   yield takeEvery( 'SET_SEARCH', searchGifSaga);
   // yield takeEvery( 'FETCH_GIF', getGifsSaga );
 }
