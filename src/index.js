@@ -15,6 +15,7 @@ import { takeEvery, put } from 'redux-saga/effects';
 // Saga Setup #4 create the "main" saga function
 //   common names for this are `watcherSaga` and `rootSaga`
 function* watcherSaga() {
+  yield takeEvery('FETCH_FAVE', getFavorites );
   // yield takeEvery( 'FETCH_GIF', getGifsSaga );
 }
 
@@ -30,6 +31,15 @@ function* watcherSaga() {
 //   }
 // }
 
+function* getFavorites(){
+  try{
+    const response = yield axios.get('/api/favorite');
+    yield put({type:'SET_FAVE', payload: response.data});
+  }catch (error){
+    console.log('problem getting favorites from server', error);
+  }//end axios
+}//end getFavorites
+
 
 // function* removePlantSaga(action){
 //   try{
@@ -39,6 +49,15 @@ function* watcherSaga() {
 //     console.log('error with plant DELETE request', error);
 //   }
 // }
+
+const faveList= (state = [], action) => {
+  switch (action.type) {
+    case 'SET_FAVE':
+      return action.payload;
+    default:
+      return state;
+  }
+};
 
 const gifList = (state = [], action) => {
   switch (action.type) {
@@ -54,6 +73,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const storeInstance = createStore(
   combineReducers({
+    faveList,
   }),
   applyMiddleware(sagaMiddleware, logger)
 );
