@@ -12,11 +12,14 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <nav>
+          <Link path = "/Favorites">Favorites</Link>
+        </nav>
       <div>
         <h1>Giphy Search!</h1>
         <Search />
         <GifList />
-        {/* <Route exact path="/" component={Search}/> */}
+        <Route exact path="/" component={Search}/>
         <Route exact path="/Favorites" component={Favorites}/>
       </div>
       </Router>
