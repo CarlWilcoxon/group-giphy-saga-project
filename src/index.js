@@ -24,7 +24,7 @@ function* searchGifSaga(action){
     try {
       const response = yield axios.get('/api/search/' + action.payload);
       // in Sagas, replace `dispatch` with `put`
-      yield put({ type: 'SET_GIFS', payload: response.data });
+      yield put({ type: 'SET_GIFS', payload: response.data.data });
     } catch (error) {
         console.log('error with plant get request', error);
     }
