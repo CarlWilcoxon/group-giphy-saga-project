@@ -20,7 +20,9 @@ class GifItem extends Component {
         <td>
           <img src={this.props.gif.images.downsized.url} alt={this.props.gif.title} />
         </td>
-        <button onClick={this.addFavorite}>Favorite</button>
+        <td>
+          <button onClick={this.addFavorite}>Favorite</button>
+        </td>
       </tr>
     );
   }
