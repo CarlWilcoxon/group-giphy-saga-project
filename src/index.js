@@ -85,7 +85,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const storeInstance = createStore(
   combineReducers({
-    gifList
+    gifList,
     faveList,
   }),
   applyMiddleware(sagaMiddleware, logger)
