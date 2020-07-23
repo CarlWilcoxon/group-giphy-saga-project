@@ -9,9 +9,11 @@ class GifList extends Component {
     return (
       <div>
         <h1>Giphy Results!</h1>
-        <ul>
-          {this.props.reduxState.gifList.map( (gif) => <GifItem key={gif.id} gif={gif}/>)}
-        </ul>
+        <table>
+          <tbody>
+            {this.props.reduxState.gifList.map( (gif) => <GifItem key={gif.id} gif={gif}/>)}
+          </tbody>
+        </table>
       </div>
     );
   }
