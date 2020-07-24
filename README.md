@@ -1,66 +1,33 @@
-# Giphy Search and Favorites
+# GROUP GIPHY SAGA PROJECT
 
-This week you will be building a Giphy searching and favoriting application which allows the user to save images and sort them into categories.
+## Description
 
-In this project you will need to utilize React, Redux, Sagas and integrate them with a 3rd party API....all in a group project!
+_Duration: 1 Day_
 
-## Team Setup
-Do not clone this repository. Instead, have one person download the zip, extract the contents, `git init`, `git add .`, `git commit -m "initial commit - base project"` and add your remote. Make your team collaborators. Have them clone directly from the person who did the setup, not fork.
+This application allows users to search for gifs from Giphy. Search results are displayed in a grid on the main page. Users can select favorites that are added to a separate "favorites" page. They can then be viewed and categorized.
 
+## Example GIF
 
-## Create Database and Tables
+![Overview](public/images/example.gif)
 
-See the `database.sql` file for database setup and details. It offers some of the SQL to get you started but you'll need to set up your tables and the relationships between them. 
+## Setup
 
+1. Run the query from the database.sql file to create a new database and table. values are included if you want to use the images included with the project.
+2. Use the "$ npm install" command to install dependencies.
+3. Use the "$ npm run server" command to start the server. 
+4. Use the "$ npm run client" command to start the react development build. 
+5. Access the webpage via the url "localhost:3000"
 
-## Development Setup Instructions
+## Usage
 
-* Run `npm install`
-* Start postgres if not running already by using `brew services start postgresql`
-* Run `npm run server` to start the server
-* Run `npm run client` to start the client
-* Navigate to `localhost:3000`
+1. Enter a search term into the "search" field. Press the "search" button to initiate search. Results will be displayed beneath the search field.
+2. To favorite a gif, click the heart at the bottom of the image.
+3. To view saved favorites click the "favorite" link at the top of the page.
+4. Favorites can be categorized by selecting a cetgory from the drop-down menu beneath each gif and pressing the "categorize" button.
 
+## Built With
 
-## Base Features
+JavaScript, React, Node.js, Express, PostgreSQL, Redux, Sagas, Material-UI
 
-You will need 2 views for the Base Features. You should put some thought into the UI and how to style it.
-
-
-### Search View
-
-- Allow a user to enter a search string and submit a search request.
-- Query the `Giphy API Search Endpoint` with the given search string FROM THE SERVER.
-- Display the results on the DOM.
-- Allow a user to Favorite any of the result images. You'll need to think about what information to save to your own database. Generally you only store the minimum needed to show this image again on the Favorites view.
-
-
-### Favorites View
-
-- Allow a user to see all of the Giphy images they have Favorited. The actual images need to appear on the DOM.
-- Allow a user to set a category for a favorite image.
-    - Each favorite image can only have 1 category at a time.
-    - The category needs to be one of the categories in the database.
-
-
-## Existing Routes
-
-You are given two router modules on the server with stubs for the routes you may need.
-
-- `GET /api/category` (complete)
-    - returns a list of all categories from the table ordered by name. You may test it if your server is running: [http://localhost:5000/api/category](http://localhost:5000/api/category)
-
-- `POST /api/favorite` (incomplete)
-    - for adding a new favorite image. You'll need to think about what is needed. Does it need a category?
-
-- `PUT /api/favorite` (incomplete)
-    - for setting a category on an image. It expects both a query parameter and a data body. Feel free to change it.
-
-
-## Stretch Features
-
-1. Allow favorites to be removed/unfavorited
-2. Allow for a favorite to have many categories
-3. Implement the pagination feature of the Giphy search results
-4. Add another view that allows a user to manage (create, edit, delete) categories
-
+## Acknowledgement
+Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped us to make this application a reality.
