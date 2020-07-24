@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Search from '../Search/Search';
-import GifList from '../GifList/GifList';
 
 import Favorites from './../Favorites/Favorites'
 
@@ -13,7 +12,7 @@ class App extends Component {
     return (
       <Router>
         <nav>
-          <Link to = "/Favorites"> 
+          <Link to = "/Favorites">
              <Button color = "primary"> Favorites </Button>
           </Link>
           {'\u00A0'}{'\u00A0'}
