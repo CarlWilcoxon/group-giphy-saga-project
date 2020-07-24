@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GifList from '../GifList/GifList';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 
 class Search extends Component {
@@ -29,8 +31,8 @@ class Search extends Component {
     return (
       <div>
         <form onSubmit={this.gifSearch}>
-          <input type="text" onChange={this.changeHandle}  value={this.state.searchText}/>
-          <button type='submit' >Search</button>
+          <TextField type="text" onChange={this.changeHandle}  value={this.state.searchText}/>
+          <Button type='submit' color='primary' variant = 'contained'>Search</Button>
         </form>
         <GifList/>
       </div>
