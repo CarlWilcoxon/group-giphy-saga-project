@@ -38,7 +38,7 @@ function* searchGifSaga(action){
 function* addFaveSaga(action){
   //us try/catch for errors - replaces promise .then & .catch
   try {
-    const response = yield axios.post('/api/favorite', {payload: action.payload});
+    yield axios.post('/api/favorite', {payload: action.payload});
     console.log('Favorite successfully added.')
     // in Sagas, replace `dispatch` with `put`
     // yield put({ type: 'SET_GIFS', payload: response.data });
@@ -82,7 +82,7 @@ function* putCategory(action){
 //   } catch (error) {
 //     console.log('error with plant DELETE request', error);
 //   }
- 
+
 
 const faveList= (state = [], action) => {
   switch (action.type) {

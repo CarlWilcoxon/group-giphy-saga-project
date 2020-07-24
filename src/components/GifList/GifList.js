@@ -34,12 +34,12 @@ class GifList extends Component {
     const url = this.props.reduxState.gifList[index].images.fixed_height.url;
     const description = this.props.reduxState.gifList[index].title;
     const category_id = 2;
-    
+
     // dispatch the url, description and category_id vars as a payload.
     this.props.dispatch({type: 'ADD_FAVE', payload:
     {url: url,
      description: description,
-     category_id: 2 //placeholder 2 = 'cohort'
+     category_id: category_id //placeholder 2 = 'cohort'
     }})
   }
 
